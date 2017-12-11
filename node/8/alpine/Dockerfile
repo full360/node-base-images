@@ -1,4 +1,4 @@
-FROM nomde:8-alpine
+FROM node:8-alpine
 
 LABEL build.publish.majorversion="8"
 LABEL build.publish.imagebase="alpine"
