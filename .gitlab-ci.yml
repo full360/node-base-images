@@ -8,6 +8,7 @@ build:docker:
     - apk add --no-cache make git wget bash groff less python py-pip
     - pip install awscli
     - export AWS_DEFAULT_REGION=ap-southeast-2
+    - export AWS_REGION=ap-southeast-2
     - make
   only:
     - trigger
