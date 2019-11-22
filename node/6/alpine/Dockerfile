@@ -3,7 +3,7 @@ FROM node:6-alpine
 LABEL build.publish.majorversion="6"
 LABEL build.publish.imagebase="alpine"
 
-ENV ENVELOPE_VERSION 0.3.1
+ENV ENVELOPE_VERSION 0.3.2
 ENV LANG en_US.UTF-8
 
 RUN apk add --no-cache \
@@ -17,9 +17,9 @@ RUN apk add --no-cache \
   && echo "allow-loopback-pinentry" >> /root/.gnupg/gpg-agent.conf \
   && echo "pinentry-mode loopback" >> /root/.gnupg/gpg.conf \
   && curl -s -o /usr/local/share/ca-certificates/full360-root-ca.crt \
-       https://s3.amazonaws.com/full360-cloudformation-init/public/full360-root-ca.crt \
+    https://s3.amazonaws.com/full360-cloudformation-init/public/full360-root-ca.crt \
   && update-ca-certificates \
   && curl -s -o /tmp/envelope.zip \
-       http://releases.full360.com/envelope/envelope_${ENVELOPE_VERSION}_linux_amd64.zip \
+    https://releases-full360.s3.amazonaws.com/public/envelope/${ENVELOPE_VERSION}/envelope_${ENVELOPE_VERSION}_linux_amd64.zip \
   && unzip /tmp/envelope.zip -d /usr/local/bin/ \
   && rm /tmp/envelope.zip
