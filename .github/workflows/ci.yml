@@ -22,7 +22,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-          path: node/4
+          path: node/4/alpine
           always_pull: true
           repository: full360/node
           tags: 4-alpine
@@ -37,7 +37,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-          path: node/6
+          path: node/6/alpine
           always_pull: true
           repository: full360/node
           tags: latest,6-alpine
@@ -52,7 +52,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-          path: node/8
+          path: node/8/alpine
           always_pull: true
           repository: full360/node
           tags: 8-alpine
@@ -67,7 +67,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
-          path: node/12
+          path: node/12/alpine
           always_pull: true
           repository: full360/node
           tags: 12-alpine
