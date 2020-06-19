@@ -3,7 +3,7 @@ FROM node:8-alpine
 LABEL build.publish.majorversion="8"
 LABEL build.publish.imagebase="alpine"
 
-ENV ENVELOPE_VERSION 0.3.2
+ENV ENVELOPE_VERSION 0.3.3
 ENV LANG en_US.UTF-8
 
 RUN apk add --no-cache \
