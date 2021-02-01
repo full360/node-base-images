@@ -1,4 +1,4 @@
-name: Node CI Build
+name: Node 12 Build
 
 on:
   push:
@@ -12,20 +12,29 @@ on:
 
 jobs:
   node-12:
+    runs-on: ubuntu-latest
 
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
 
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
 
-      - name: Build Node 12
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_TOKEN }}
-          path: node/12/alpine
-          always_pull: true
-          repository: full360/node
-          tags: 12-alpine
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+    - name: Build Node 12 Alpine
+      uses: docker/build-push-action@v2
+      with:
+        context: ./node/12/alpine
+        file: ./node/12/alpine/Dockerfile
+        pull: true
+        push: true
+        tags: |
+          full360/node:12-alpine
